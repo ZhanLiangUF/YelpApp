@@ -24,18 +24,19 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
      searchBar.delegate = self
      tableView.rowHeight = UITableViewAutomaticDimension
      tableView.estimatedRowHeight = 120
+
+      
         
-        
-        
-        
-        
-}
+
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
-        Business.searchWithTerm("searchBar.text", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm(searchBar.text!, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
+            
             self.tableView.reloadData()
+            
             
             
             for business in businesses {
@@ -44,10 +45,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             }
         })
         
-        
-        
-        
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
